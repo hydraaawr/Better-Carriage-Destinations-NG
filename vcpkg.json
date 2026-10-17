@@ -1,23 +1,15 @@
 {
-  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-  "name": "modname",
-  "version-string": "0.1.0.0",
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "better-carriage-destinations",
+  "version-string": "1.0.10",
+  "description": "Better Carriage Destinations - SKSE64 plugin.",
+  "license": "MIT",
+  "supports": "windows & x64",
+  "builtin-baseline": "ee12231b20c95013c6638d845d04c91559a1d1ff",
   "dependencies": [
-    "fast-cpp-csv-parser",
-    "rsm-binary-io",
-    "spdlog",
-    "xbyak",
-    "rapidcsv",
-    "clib-util",
-    "clib-utils-qtr",
-    "directxtk",
-    "skse-mcp"
-  ],
-  "overrides": [
-    {
-      "name": "fmt",
-      "version": "9.1.0"
-    }
-  ],
-  "builtin-baseline": "74e6536215718009aae747d86d84b78376bf9e09"
+    { "name": "directxmath", "version>=": "2025-04-03" },
+    { "name": "directxtk", "version>=": "2025-10-27" },
+    { "name": "rapidcsv", "version>=": "8.90" },
+    { "name": "spdlog", "version>=": "1.16.0" }
+  ]
 }

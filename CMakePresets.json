@@ -1,49 +1,33 @@
 {
-    "version": 3,
-    "configurePresets": [
-      {
-        "name": "base",
-        "hidden": true,
-        "generator": "Ninja",
-        "binaryDir": "${sourceDir}/build/${presetName}",
-        "installDir": "${sourceDir}/install/${presetName}",
-        "architecture": {
-          "value": "x64",
-          "strategy": "external"
-        },
-        "cacheVariables": {
-          "CMAKE_CXX_COMPILER": "cl.exe",
-          "CMAKE_CXX_FLAGS": "/permissive- /Zc:preprocessor /EHsc /MP /W4 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DUNICODE -D_UNICODE",
-          "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-          "VCPKG_OVERLAY_PORTS": {
-            "type": "STRING",
-            "value": "${sourceDir}/cmake/ports/"
-          },
-          "VCPKG_TARGET_TRIPLET": "x64-windows-static",
-          "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
-          "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded$<$<CONFIG:Debug>:Debug>",
-          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-        }
-      },
-        {
-            "name": "debug",
-            "inherits": ["base"],
-            "displayName": "Debug",
-            "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
-        },
-      {
-        "name": "release",
-        "inherits": [ "base" ],
-        "displayName": "Release",
-        "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
-      },
-      {
-        "name": "relwithdebuginfo",
-        "inherits": [ "base" ],
-        "displayName": "RelWithDebInfo",
-        "cacheVariables": {
-          "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-        }
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "build-release-linux-clangcl-vcpkg-all",
+      "displayName": "Release (All, Clang-CL, Vcpkg, Linux host cross-compile)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release-linux-clangcl-vcpkg-all",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS": "-DWIN32_LEAN_AND_MEAN -DNOMINMAX -DUNICODE -D_UNICODE /permissive- /EHsc /W4 /bigobj -Wno-overloaded-virtual -Wno-delete-non-abstract-non-virtual-dtor -Wno-inconsistent-missing-override -Wno-reinterpret-base-class -Wno-nonportable-include-path -Wno-deprecated-copy-with-user-provided-copy -Wno-invalid-offsetof -Wno-switch -Wno-unused-command-line-argument -Wno-deprecated-volatile -Wno-unused-private-field",
+        "USE_VCPKG": "ON",
+        "COMMONLIB_ENABLE_IPO": "OFF",
+        "VCPKG_TARGET_TRIPLET": "x64-windows-clangcl",
+        "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake/linux-cross",
+        "VCPKG_OVERLAY_PORTS": "${sourceDir}/lib/commonlibsse-ng/examples/linux-cross-compile/custom-ports",
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/linux-cross/toolchain-clangcl-wrapper.cmake"
       }
-    ]
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release-linux-clangcl-vcpkg-all",
+      "configurePreset": "build-release-linux-clangcl-vcpkg-all"
+    }
+  ]
 }

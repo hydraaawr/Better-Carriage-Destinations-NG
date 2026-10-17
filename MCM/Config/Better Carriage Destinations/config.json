@@ -1,0 +1,109 @@
+{
+    "modName": "Better Carriage Destinations",
+    "displayName": "$BCD_NAME",
+    "minMcmVersion": 13,
+    "cursorFillMode": "topToBottom",
+    "content": [
+        {
+            "type": "header",
+            "text": "$BCD_GENERAL"
+        },
+        {
+            "id" : "bOnlyDiscovered:Main",
+            "text": "$BCD_OD",
+            "help": "$BCD_ODH",
+            "type": "toggle",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "id" : "bTimePasses:Main",
+            "text": "$BCD_TIME",
+            "help": "$BCD_TIMEH",
+            "type": "toggle",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "type": "header",
+            "text": "$BCD_PRICE"
+        },
+        {
+            "id" : "fCostMult:Main",
+            "type" : "slider",
+            "text" : "$BCD_CM",
+            "valueOptions": {
+                "min" : 0.1,
+                "max" : 3.0,
+                "step" : 0.1,
+                "formatString": "{1}",
+                "sourceType": "ModSettingFloat"
+            }
+        },
+        {
+            "id" : "fDangerousCostMult:Main",
+            "type" : "slider",
+            "text" : "$BCD_DC",
+            "help" : "$BCD_DCH",
+            "valueOptions": {
+                "min" : 0.1,
+                "max" : 3.0,
+                "step" : 0.1,
+                "formatString": "{1}",
+                "sourceType": "ModSettingFloat"
+            }
+        },
+        {
+            "id" : "iMinCost:Main",
+            "type" : "slider",
+            "text" : "$BCD_MIN",
+            "valueOptions": {
+                "min" : 1,
+                "max" : 3000,
+                "step" : 1,
+                "formatString": "{1}",
+                "sourceType": "ModSettingInt"
+            }
+        },
+        {
+            "id" : "iMaxCost:Main",
+            "type" : "slider",
+            "text" : "$BCD_MAX",
+            "valueOptions": {
+                "min" : 1,
+                "max" : 3000,
+                "step" : 1,
+                "formatString": "{1}",
+                "sourceType": "ModSettingInt"
+            }
+        },
+        {
+            "type": "header",
+            "text": "$BCD_CAR",
+            "position": 1
+        },
+        {
+            "id" : "bOnlySettlement:Main",
+            "text": "$BCD_OS",
+            "help": "$BCD_OSH",
+            "type": "toggle",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            },
+            "groupControl": 1
+        },
+        {
+            "id" : "bAllowCleared:Main",
+            "text": "$BCD_AC",
+            "help": "$BCD_ACH",
+            "type": "toggle",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            },
+            "groupCondition": 1,
+            "groupBehavior": "hide"
+        }
+    ]
+}
